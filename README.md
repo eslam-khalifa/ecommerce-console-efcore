@@ -41,3 +41,73 @@ This project demonstrates a small relational database with multiple entity relat
 
 ```bash
 git clone https://github.com/your-username/ECommerceEFCore.git
+```
+
+2. Update the connection string in `Program.cs` (or `ApplicationDbContextFactory.cs`) to match your SQL Server:
+
+```csharp
+optionsBuilder.UseSqlServer("Server=localhost;Database=ECommerceDb;Trusted_Connection=True;TrustServerCertificate=True;");
+```
+
+1. Run EF Core migrations:
+
+```powershell
+Add-Migration InitialCreate
+Update-Database
+```
+
+4. Run the console app:
+
+```bash
+dotnet run
+```
+
+---
+
+## Project Structure
+
+```txt
+ECommerce/
+│
+├─ Configurations/
+│ ├─ CategoryConfig.cs
+│ ├─ CustomerConfig.cs
+│ ├─ OrderConfig.cs
+│ ├─ OrderItemConfig.cs
+│ └─ ProductConfig.cs
+│
+├─ Data/
+│ ├─ ApplicationDbContext.cs
+│ └─ ApplicationDbContextFactory.cs
+│
+├─ Migrations/
+│ ├─ 20250827181845_AddCategoryAndCustomerAndOrderAndOrderItemsAndProductTables.cs
+│ └─ ApplicationDbContextModelSnapshot.cs
+│
+├─ Models/
+│ ├─ Category.cs
+│ ├─ Customer.cs
+│ ├─ Order.cs
+│ ├─ OrderItem.cs
+│ └─ Product.cs
+│
+├─ EFCoreQueries.cs
+├─ GlobalUsings.cs
+├─ Program.cs
+├─ .editorconfig
+├─ bin/
+└─ obj/
+```
+
+---
+
+## Notes
+
+- Seed data uses **static values** for migrations to avoid EF Core “model changes every build” warnings.
+- Runtime code can still use `DateTime.UtcNow` or `Guid.NewGuid()` for dynamic data.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
