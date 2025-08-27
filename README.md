@@ -49,7 +49,7 @@ git clone https://github.com/your-username/ECommerceEFCore.git
 optionsBuilder.UseSqlServer("Server=localhost;Database=ECommerceDb;Trusted_Connection=True;TrustServerCertificate=True;");
 ```
 
-1. Run EF Core migrations:
+3. Run EF Core migrations:
 
 ```powershell
 Add-Migration InitialCreate
